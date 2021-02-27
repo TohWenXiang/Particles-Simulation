@@ -21,12 +21,7 @@ function setup() {
   //add all particles to physics system as entities
   physicsSystem.addEntities(particleSystem.particles);
 
-  //apply a initial force to each particle
-  let force;
-  physicsSystem.entityList.forEach(entities => {
-    force = createVector(random(-3, 3), random(-3, 3));
-    entities.applyForce(force.x, force.y);
-  });
+  applyForceToAllEntities();
 }
   
 function draw() {
@@ -34,4 +29,17 @@ function draw() {
     background(51);
     physicsSystem.update();
     particleSystem.draw();
+}
+
+setInterval(applyForceToAllEntities, 2000);
+
+function applyForceToAllEntities() {
+  //apply a initial force to each particle
+  let force;
+  physicsSystem.entityList.forEach(entities => {
+    entities.velocity.mult(0);
+    entities.position.set(random(50, 250), random(50, 250));
+    force = createVector(random(-3, 3), random(-3, 3));
+    entities.applyForce(force.x, force.y);
+  });
 }
