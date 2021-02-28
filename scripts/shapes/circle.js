@@ -5,7 +5,11 @@ class Circle extends Shape {
   }
   
   draw(x = 0, y = 0) {
-    super.draw();
+    if(!this.filled) {
+      noFill();
+    }
+    strokeWeight(1);
+    stroke(255);
     circle(x, y, this.radius);
   }
 }

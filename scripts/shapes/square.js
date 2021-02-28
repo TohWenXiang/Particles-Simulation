@@ -4,7 +4,11 @@ class Square extends Rect {
   }
   
   draw(x = 0, y = 0) {
-    super.draw();
+    if(!this.filled) {
+      noFill();
+    }
+    strokeWeight(1);
+    stroke(255);
     square(x, y, this.width);
   }
 }

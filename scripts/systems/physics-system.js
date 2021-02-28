@@ -8,12 +8,6 @@ class PhysicsSystem {
         this.entityList.push(entity);
     }
 
-    addEntities(entities = []) {
-        entities.forEach(entity => {
-            this.addEntity(entity);  
-        });
-    }
-
     update() {
         this.entityList.forEach(entity => {
             //v = u + at

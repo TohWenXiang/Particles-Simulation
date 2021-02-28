@@ -12,14 +12,13 @@ function setup() {
   physicsSystem = new PhysicsSystem(gravity);
 
   //create some particles
-  particleSystem = new ParticleSystem();
+  particleSystem = new ParticleSystem(physicsSystem);
 
-  for (let i = 0; i < 100; i++) {
-    particleSystem.createParticle(random(50, 250), random(50, 250), 1, new Circle(10, (random(0, 1) < 0.5)));  
-  }  
+  let circle = new Circle(10, true);
+  let square = new Square(10, true);
+  let shapes = [circle, square];
 
-  //add all particles to physics system as entities
-  physicsSystem.addEntities(particleSystem.particles);
+  particleSystem.createParticles(150, 150, 1, shapes, 100);
 
   applyForceToAllEntities();
 }

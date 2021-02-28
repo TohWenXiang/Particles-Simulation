@@ -1,5 +1,6 @@
 class ParticleSystem {
-    constructor() {
+    constructor(physicsSystem = new PhysicsSystem()) {
+        this.physicsSystem = physicsSystem;
         this.particles = [];
     }
 
@@ -10,16 +11,19 @@ class ParticleSystem {
         this.addParticle(particle);
     }
 
+    createParticles(x = 0, y = 0, mass = 1, shapeList = [], count = 1) {
+        let particle;
+        for (let i = 0; i < count; i++) {
+            particle = new Particle(x, y, mass, random(shapeList));
+            this.addParticle(particle);
+        }
+    }
+
     addParticle(particle) {
         this.particles.push(particle);
+        this.physicsSystem.addEntity(particle);
     }
-
-    addParticles(particles = []) {
-        particles.forEach(particle => {
-            this.addParticle(particle);
-        });
-    }
-
+    
     draw() {
         this.particles.forEach(particle => {
             particle.draw();
