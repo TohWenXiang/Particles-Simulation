@@ -6,9 +6,14 @@ class Particle extends Entity {
   
   update() {
     super.update();
+    this.shape.position = this.position; 
   }
   
   draw() {
-    this.shape.draw(this.position.x, this.position.y);
+    
+    noFill();
+    strokeWeight(1);
+    stroke(255);
+    this.shape.draw();
   }
 }

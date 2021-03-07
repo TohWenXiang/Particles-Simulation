@@ -1,16 +1,11 @@
 class Rect extends Shape {
-  constructor(width = 1, height = 1, filled = false) {
-    super(filled);
+  constructor(x = 0, y = 0, width = 1, height = 1) {
+    super(x, y);
     this.width = width;
     this.height = height;
   }
   
-  draw(x = 0, y = 0) {
-    if(!this.filled) {
-      noFill();
-    }
-    strokeWeight(1);
-    stroke(255);
-    rect(x, y, this.width, this.height);
+  draw() {
+    rect(this.position.x, this.position.y, this.width, this.height);
   }
 }

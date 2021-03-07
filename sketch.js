@@ -14,19 +14,24 @@ function setup() {
   //create some particles
   particleSystem = new ParticleSystem(physicsSystem);
 
-  let circle = new Circle(10, true);
-  let square = new Square(10, true);
-  let shapes = [circle, square];
-
-  particleSystem.createParticles(150, 150, 1, shapes, 100);
+  let position;
+  let shape; 
+  let mass = 1;
+  let radius = 10;
+  
+  for(let i = 0; i < 100; i++) {
+    position = createVector(random(50, 250), random(0, 250));
+    shape = new Circle(position.x, position.y, radius);
+    particleSystem.createParticle(position.x, position.y, mass, shape);
+  }
 
   applyForceToAllEntities();
 }
   
 function draw() {
-    //noLoop();
     background(51);
     physicsSystem.update();
+    particleSystem.update();
     particleSystem.draw();
 }
 
