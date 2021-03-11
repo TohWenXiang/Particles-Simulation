@@ -8,6 +8,12 @@ class Particle extends Entity {
     this.decayRate = 4;
   }
 
+  reset() {
+    super.reset();
+    this.isDead = false;
+    this.currentLifespan = this.maxLifespan;
+  }
+
   update() {
     if(this.isDead) return;
 

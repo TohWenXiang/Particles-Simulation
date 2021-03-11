@@ -11,6 +11,12 @@ class Entity {
     let F = createVector(x, y);//force.copy();
     this.acceleration = F.div(this.mass);
   }
+
+  reset() {
+    this.position.mult(0);
+    this.velocity.mult(0);
+    this.acceleration.mult(0);
+  }
   
   update() {
     

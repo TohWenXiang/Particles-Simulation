@@ -7,16 +7,14 @@ class ParticleSystem {
     }
 
     createParticle(mass = 1, shape) {
-        let deadParticles = this.getDeadParticles();
         let particle;
+        let deadParticles = this.getDeadParticles();
+
         if(deadParticles.length > 0) {
             particle = deadParticles[0];
-            console.log(particle);
-            particle.velocity.mult(0);
+            particle.reset();
             particle.position.x = this.x;
             particle.position.y = this.y;
-            particle.isDead = false;
-            particle.currentLifespan = particle.maxLifespan;
         } else {
             particle = new Particle(this.x, this.y, mass, shape);
 
@@ -24,9 +22,7 @@ class ParticleSystem {
             this.addParticle(particle);
         }
         
-
         particle.applyForce(random(-2, 2), 0);
-        //console.log(this.particles.length);
     }
 
     addParticle(particle) {
