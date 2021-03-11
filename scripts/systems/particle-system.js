@@ -35,7 +35,7 @@ class ParticleSystem {
     }
 
     update() {
-        particleSystem.createParticle(random(1, 5), new Circle(0, 0, 10));
+        this.createParticle(random(1, 5), new Circle(0, 0, 10));
 
         this.particles.forEach(particle => {
             particle.update();
