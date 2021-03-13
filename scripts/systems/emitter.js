@@ -1,4 +1,4 @@
-class ParticleSystem {
+class Emitter {
     constructor(x = 0, y = 0, physicsSystem = new PhysicsSystem()) {
         this.x = x;
         this.y = y;

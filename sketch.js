@@ -1,7 +1,7 @@
 /// <reference path="library/references/p5.global-mode.d.ts"/>
 
 let physicsSystem;
-let particleSystemList = [];
+let emitterList = [];
   
 function setup() {
   createCanvas(300, 300);
@@ -16,7 +16,7 @@ function mousePressed() {
   let positionX = constrain(mouseX, 0, width);
   let positionY = constrain(mouseY, 0, height);
   //create a particle system 
-  particleSystemList.push(new ParticleSystem(positionX, positionY, physicsSystem));
+  emitterList.push(new Emitter(positionX, positionY, physicsSystem));
 }
 
 function draw() {
@@ -24,9 +24,9 @@ function draw() {
     
     physicsSystem.update();
     
-    particleSystemList.forEach(particleSystem => {
-      particleSystem.update();
-      particleSystem.draw();
+    emitterList.forEach(emitter => {
+      emitter.update();
+      emitter.draw();
     });
     
 }
