@@ -1,22 +1,27 @@
 class Emitter {
-    constructor(x = 0, y = 0, physicsSystem = new PhysicsSystem()) {
+    constructor(x = 0, y = 0, emitterShape = new Shape(), physicsSystem = new PhysicsSystem()) {
         this.x = x;
         this.y = y;
+        
+        this.emitterShape = emitterShape;
+        
         this.physicsSystem = physicsSystem;
         this.particles = [];
     }
 
     createParticle(mass = 1, shape) {
         let particle;
+        let particlePosition = this. emitterShape.getRandomPos();
+        
         let deadParticles = this.getDeadParticles();
 
         if(deadParticles.length > 0) {
             particle = deadParticles[0];
             particle.reset();
-            particle.position.x = this.x;
-            particle.position.y = this.y;
+            particle.position.x = particlePosition.x;
+            particle.position.y = particlePosition.y;
         } else {
-            particle = new Particle(this.x, this.y, mass, shape);
+            particle = new Particle(particlePosition.x, particlePosition.y, mass, shape);
 
             //add to particles list
             this.addParticle(particle);

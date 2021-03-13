@@ -4,4 +4,6 @@ class Shape {
   }
   
   draw() {}
+  
+  getRandomPos() {}
 }

@@ -16,7 +16,7 @@ function mousePressed() {
   let positionX = constrain(mouseX, 0, width);
   let positionY = constrain(mouseY, 0, height);
   //create a particle system 
-  emitterList.push(new Emitter(positionX, positionY, physicsSystem));
+  emitterList.push(new Emitter(positionX, positionY, new Point(positionX, positionY), physicsSystem));
 }
 
 function draw() {

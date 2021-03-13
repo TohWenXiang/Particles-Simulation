@@ -6,4 +6,8 @@ class Square extends Rect {
   draw() {
     square(this.position.x, this.position.y, this.width);
   }
+  
+  getRandomPos() {
+    return super.getRandomPos();
+  }
 }
