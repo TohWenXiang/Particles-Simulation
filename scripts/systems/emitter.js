@@ -11,8 +11,10 @@ class Emitter {
     }
 
     emitParticle() {
+        let particle;
         let position = this.emitterShape.getRandomPos();
-        this.particleSystem.createParticle(position.x, position.y, random(1, 5), new Circle(0, 0, 10));
+        particle = this.particleSystem.createParticle(position.x, position.y, random(1, 5), new Circle(0, 0, 10));
+        //particle.applyForce(random(-2, 2), random(-2, 2));
     }
 
     update() {

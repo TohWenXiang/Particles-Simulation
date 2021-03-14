@@ -13,6 +13,7 @@ function setup() {
   physicsSystem = new PhysicsSystem(gravity);
   
   particleSystem = new ParticleSystem();
+  //particleSystem = new ParticleSystem(physicsSystem);
 
   let emitterPos = createVector(150, 150);
   let emitterRadius = 100;
@@ -21,7 +22,7 @@ function setup() {
 }
 
 function draw() {
-    background(200);
+    background(100);
     
     physicsSystem.update();
     

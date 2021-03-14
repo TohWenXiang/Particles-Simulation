@@ -7,22 +7,19 @@ class ParticleSystem {
     }
 
     createParticle(x = 0, y = 0, mass = 1, shape) {
-        let particle;
-        let deadParticles = this.getDeadParticles();
+        //get a dead particle or create a new one
+        let particle = this.getDeadParticle() ?? new Particle(x, y, mass, shape);
 
-        if (deadParticles.length > 0) {
-            particle = deadParticles[0];
+        //reset the dead particle
+        if (particle.isDead) {
             particle.reset();
             particle.position.x = x;
             particle.position.y = y;
         } else {
-            particle = new Particle(x, y, mass, shape);
-
-            //add to particles list
+            //otherwise store the new particle
             this.addParticle(particle);
         }
-
-        particle.applyForce(random(-2, 2), 0);
+        return particle;
     }
 
     addParticle(particle) {
@@ -30,8 +27,8 @@ class ParticleSystem {
         this.physicsSystem.addEntity(particle);
     }
 
-    getDeadParticles() {
-        return this.particles.filter(particle => particle.isDead === true);
+    getDeadParticle() {
+        return this.particles.filter(particle => particle.isDead === true)[0];
     }
 
     update() {
