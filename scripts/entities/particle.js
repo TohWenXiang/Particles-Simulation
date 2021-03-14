@@ -1,3 +1,5 @@
+/// <reference path="../../library/references/p5.global-mode.d.ts"/>
+
 class Particle extends Entity {
   constructor(x = 0, y = 0, mass = 1, shape = new Shape()) {
     super(x, y, mass);
@@ -30,7 +32,7 @@ class Particle extends Entity {
   draw() {
     if(this.isDead) return;
 
-    noStroke();
+    stroke(255);
     fill(this.currentLifespan);
     this.shape.draw();
   }

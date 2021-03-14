@@ -2,6 +2,7 @@
 
 let physicsSystem;
 let particleSystem;
+let emitter;
   
 function setup() {
   createCanvas(300, 300);
@@ -12,22 +13,23 @@ function setup() {
   physicsSystem = new PhysicsSystem(gravity);
   
   particleSystem = new ParticleSystem();
-}
 
-function mousePressed() {
-  let positionX = constrain(mouseX, 0, width);
-  let positionY = constrain(mouseY, 0, height);
-  //create a emitter
-  let emitter = new Emitter(positionX, positionY, new Point(positionX, positionY), physicsSystem);
-  particleSystem.addEmitter(emitter);
+  let emitterPos = createVector(150, 150);
+  let emitterRadius = 100;
+  emitter = new Emitter(emitterPos.x, emitterPos.y, new Circle(emitterPos.x, emitterPos.y, emitterRadius), particleSystem);
+  emitter.emitParticle();
 }
 
 function draw() {
-    background(51);
+    background(200);
     
     physicsSystem.update();
     
+    emitter.update();
+
     particleSystem.update();
     particleSystem.draw();
+
+    
     
 }
