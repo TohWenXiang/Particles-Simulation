@@ -15,10 +15,12 @@ function setup() {
   particleSystem = new ParticleSystem();
   //particleSystem = new ParticleSystem(physicsSystem);
 
-  let emitterPos = createVector(150, 150);
+  let emitterPos = createVector(150 , 150);
   let emitterRadius = 100;
-  emitter = new Emitter(emitterPos.x, emitterPos.y, new Circle(emitterPos.x, emitterPos.y, emitterRadius), particleSystem);
+  let emitterMass = 1;
+  emitter = new Emitter(emitterPos.x, emitterPos.y, emitterMass, new Square(emitterPos.x, emitterPos.y, emitterRadius), particleSystem);
   emitter.emitParticle();
+  physicsSystem.addEntity(emitter);
 }
 
 function draw() {
