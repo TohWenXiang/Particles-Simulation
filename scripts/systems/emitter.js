@@ -1,7 +1,7 @@
 /// <reference path="../../library/references/p5.global-mode.d.ts"/>
 
 class Emitter extends Entity{
-    constructor(x = 0, y = 0, mass = 0, emitterShape = Shape(), particleSystem = new ParticleSystem()) {
+    constructor(x = 0, y = 0, mass = 1, emitterShape = Shape(), particleSystem = new ParticleSystem()) {
         super(x, y, mass);
 
         this.emitterShape = emitterShape;
@@ -17,7 +17,8 @@ class Emitter extends Entity{
     }
 
     update() {
-      this.emitterShape.position = this.position; 
+        this.emitterShape.position = this.position;
+
         this.emitParticle();
     }
 }

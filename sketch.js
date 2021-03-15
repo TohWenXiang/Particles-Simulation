@@ -1,6 +1,7 @@
 /// <reference path="library/references/p5.global-mode.d.ts"/>
 
-let physicsSystem;
+let physicsSystemWithgravity;
+let physicsSystemWithoutgravity;
 let particleSystem;
 let emitter;
   
@@ -10,7 +11,8 @@ function setup() {
 
   //create a physics environment
   let gravity = createVector(0, 0.098);
-  physicsSystem = new PhysicsSystem(gravity);
+  physicsSystemWithgravity = new PhysicsSystem(gravity);
+  physicsSystemWithoutgravity = new PhysicsSystem();
   
   particleSystem = new ParticleSystem();
   //particleSystem = new ParticleSystem(physicsSystem);
@@ -18,21 +20,21 @@ function setup() {
   let emitterPos = createVector(150 , 150);
   let emitterRadius = 100;
   let emitterMass = 1;
-  emitter = new Emitter(emitterPos.x, emitterPos.y, emitterMass, new Square(emitterPos.x, emitterPos.y, emitterRadius), particleSystem);
+  emitter = new Emitter(emitterPos.x, emitterPos.y, emitterMass, new Circle(emitterPos.x, emitterPos.y, emitterRadius), particleSystem);
+
   emitter.emitParticle();
-  physicsSystem.addEntity(emitter);
+
+  physicsSystemWithoutgravity.addEntity(emitter);
+
 }
 
 function draw() {
     background(100);
     
-    physicsSystem.update();
+    physicsSystemWithgravity.update();
     
     emitter.update();
 
     particleSystem.update();
-    particleSystem.draw();
-
-    
-    
+    particleSystem.draw();   
 }
