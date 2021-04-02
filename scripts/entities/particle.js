@@ -32,8 +32,8 @@ class Particle extends Entity {
   draw() {
     if(this.isDead) return;
 
-    stroke(255);
-    fill(this.currentLifespan);
+    stroke(this.currentLifespan);
+    fill(this.currentLifespan * 0.5);
     this.shape.draw();
   }
 }

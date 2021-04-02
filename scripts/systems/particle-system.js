@@ -28,7 +28,7 @@ class ParticleSystem {
     }
 
     getDeadParticle() {
-        return this.particles.filter(particle => particle.isDead === true)[0];
+        return this.particles.filter(particle => particle.isDead)[0];
     }
 
     update() {
